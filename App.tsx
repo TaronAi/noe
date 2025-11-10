@@ -9,6 +9,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import OurTeamPage from './pages/OurTeamPage';
 import ContactPage from './pages/ContactPage';
 import PageTransition from './components/PageTransition';
+import ScrollToTop from './components/ScrollToTop';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const AnimatedRoutes = () => {
 const App: React.FC = () => {
   return (
     <HashRouter>
+      <ScrollToTop />
       <div className="bg-white text-noe-dark font-sans flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">

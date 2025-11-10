@@ -1,19 +1,76 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView, animate } from 'framer-motion';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import { ScrollDownIcon } from '../components/icons';
 
 const HomePage: React.FC = () => {
+  const cupsCounterRef = useRef<HTMLHeadingElement>(null);
+  const cupsInView = useInView(cupsCounterRef, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    if (cupsInView && cupsCounterRef.current) {
+      const node = cupsCounterRef.current;
+      const controls = animate(0, 1000, {
+        duration: 4,
+        ease: "circOut",
+        onUpdate(value) {
+          node.textContent = String(Math.round(value));
+        },
+        onComplete() {
+            node.textContent = '1000+';
+        }
+      });
+      return () => controls.stop();
+    }
+  }, [cupsInView]);
+
+  const recipesCounterRef = useRef<HTMLHeadingElement>(null);
+  const recipesInView = useInView(recipesCounterRef, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    if (recipesInView && recipesCounterRef.current) {
+      const node = recipesCounterRef.current;
+      const controls = animate(0, 30, {
+        duration: 4,
+        ease: "circOut",
+        onUpdate(value) {
+          node.textContent = String(Math.round(value));
+        },
+        onComplete() {
+            node.textContent = '30+';
+        }
+      });
+      return () => controls.stop();
+    }
+  }, [recipesInView]);
+
   return (
     <div>
       {/* Hero Section */}
       <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/images/det_noe_wiz_5.jpg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 animate-fade-in-down">Welcome to Noe Coffee Bar</h1>
-          <p className="text-lg md:text-xl max-w-2xl animate-fade-in-up">Great coffee • Fresh bites • Cozy vibes</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl font-serif font-bold tracking-tight">
+              Welcome to Noe Coffee Bar
+            </h1>
+            <p className="mt-4 text-lg md:text-2xl">
+              Great coffee • Fresh bites • Cozy vibes
+            </p>
+          </motion.div>
+
+          <motion.div 
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <Link 
               to="/menu" 
               className="bg-noe-yellow text-noe-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
@@ -28,7 +85,7 @@ const HomePage: React.FC = () => {
             >
               Place an Order
             </a>
-          </div>
+          </motion.div>
         </div>
         {/* Scroll Down Indicator */}
         <div 
@@ -42,6 +99,28 @@ const HomePage: React.FC = () => {
             >
               <ScrollDownIcon />
             </motion.div>
+        </div>
+      </section>
+      
+      {/* Stats Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimateOnScroll>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="text-center">
+                  <h2 ref={cupsCounterRef} className="text-5xl md:text-6xl font-serif font-bold text-noe-yellow tracking-tighter">
+                      0
+                  </h2>
+                  <p className="mt-2 text-lg text-gray-600">Cups Brewed with Love</p>
+              </div>
+              <div className="text-center">
+                  <h2 ref={recipesCounterRef} className="text-5xl md:text-6xl font-serif font-bold text-noe-yellow tracking-tighter">
+                      0
+                  </h2>
+                  <p className="mt-2 text-lg text-gray-600">Drink Recipes</p>
+              </div>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
