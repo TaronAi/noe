@@ -32,7 +32,7 @@ const ContactPage: React.FC = () => {
                 <h3 className="text-2xl font-serif font-bold mb-2">Hours</h3>
                 <p className="text-gray-600">Monday - Friday: 5:30am - 5:30pm</p>
                 <p className="text-gray-600">Saturday: 6am - 1:30pm</p>
-                <p className="text-gray-600">Saturday: 7am - 1:30pm</p>
+                <p className="text-gray-600">Sunday: 7am - 1:30pm</p>
               </div>
               <div>
                 <h3 className="text-2xl font-serif font-bold mb-2">Services</h3>

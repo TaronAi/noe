@@ -17,7 +17,7 @@ const AboutUsPage: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <img 
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSONOOIAI7vVaHnMvWGJqk-pR9LIroZJ_kI5A&s" 
+                  src="https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/photos/gn_noe_wiz_2.jpg" 
                   alt="Noe Coffee Bar exterior" 
                   className="rounded-lg shadow-2xl object-cover w-full h-full"
                 />

@@ -81,10 +81,12 @@ const MenuItem: React.FC<{ name: string; price: string; description?: string }> 
 const MenuCategory: React.FC<{ title: string; items: { name: string; price: string; description?: string }[] }> = ({ title, items }) => (
   <div className="mb-12">
     <h2 className="text-3xl font-serif font-bold mb-6 text-center text-noe-yellow">{title}</h2>
-    <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-sm">
-      {items.map((item) => (
-        <MenuItem key={item.name} {...item} />
-      ))}
+    <div className="max-w-2xl mx-auto">
+      <div className="bg-white p-6 rounded-lg shadow-sm">
+        {items.map((item) => (
+          <MenuItem key={item.name} {...item} />
+        ))}
+      </div>
     </div>
   </div>
 );
