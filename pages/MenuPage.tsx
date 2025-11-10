@@ -1,4 +1,5 @@
 import React from 'react';
+import CircularText from '../components/CircularText';
 
 const menuData = {
   coldCoffees: [
@@ -91,8 +92,17 @@ const MenuPage: React.FC = () => {
   return (
     <div className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-            <h1 className="text-5xl font-serif font-bold text-noe-dark inline-block pb-2 border-b-4 border-noe-yellow">Our Menu</h1>
+        <div className="text-center mb-20 flex justify-center">
+            <CircularText
+                text="* NOE COFFEE BAR * FRESHLY BREWED "
+                spinDuration={30}
+                onHover="slowDown"
+            >
+                <div className="text-center">
+                    <h1 className="text-5xl font-serif font-bold text-noe-dark leading-none">Our</h1>
+                    <h1 className="text-5xl font-serif font-bold text-noe-dark leading-none">Menu</h1>
+                </div>
+            </CircularText>
         </div>
         <MenuCategory title="Cold Coffees" items={menuData.coldCoffees} />
         <MenuCategory title="Hot Coffees" items={menuData.hotCoffees} />
