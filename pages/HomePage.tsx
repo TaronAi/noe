@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AnimateOnScroll from '../components/AnimateOnScroll';
 
 const HomePage: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('https://picsum.photos/seed/noecoffee/1920/1080')" }}>
+      <section className="relative h-[60vh] md:h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/images/det_noe_wiz_5.jpg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 animate-fade-in-down">Welcome to Noe Coffee Bar</h1>
@@ -30,22 +31,24 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <h2 className="text-3xl font-serif font-bold mb-4">Crafted with Passion</h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Noe Coffee Bar was born from a simple idea: to create a space where community, design, and coffee come together. Our shop, built from modern shipping containers, reflects our commitment to innovation and quality.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                We source the finest beans from sustainable farms around the world and roast them to perfection to bring out their unique flavors. Join us for a cup and become part of our story.
-              </p>
+          <AnimateOnScroll>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="order-2 md:order-1">
+                <h2 className="text-3xl font-serif font-bold mb-4">Crafted with Passion</h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Noe Coffee Bar was born from a simple idea: to create a space where community, design, and coffee come together. Our shop, built from modern shipping containers, reflects our commitment to innovation and quality.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  We source the finest beans from sustainable farms around the world and roast them to perfection to bring out their unique flavors. Join us for a cup and become part of our story.
+                </p>
+              </div>
+              <div className="order-1 md:order-2">
+                <img src="https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/photos/gn_noe_wiz_4.jpg" alt="Noe Coffee Bar Interior" className="rounded-lg shadow-xl w-full h-full object-cover"/>
+              </div>
             </div>
-            <div className="order-1 md:order-2">
-              <img src="https://picsum.photos/seed/noeinterior/800/600" alt="Noe Coffee Bar Interior" className="rounded-lg shadow-xl w-full h-full object-cover"/>
-            </div>
-          </div>
+          </AnimateOnScroll>
         </div>
       </section>
     </div>

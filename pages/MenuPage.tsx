@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularText from '../components/CircularText';
+import AnimateOnScroll from '../components/AnimateOnScroll';
 
 const menuData = {
   coldCoffees: [
@@ -89,8 +90,19 @@ const MenuCategory: React.FC<{ title: string; items: { name: string; price: stri
 );
 
 const MenuPage: React.FC = () => {
+  const categories = [
+    { title: "Cold Coffees", items: menuData.coldCoffees },
+    { title: "Hot Coffees", items: menuData.hotCoffees },
+    { title: "Cold & Hot Beverages", items: menuData.beverages },
+    { title: "Chinos", items: menuData.chinos },
+    { title: "Smoothies & Granitas", items: menuData.smoothies },
+    { title: "Pastries", items: menuData.pastries },
+    { title: "Hot Sandwiches", items: menuData.sandwiches },
+    { title: "Soft Drinks", items: menuData.softDrinks },
+  ];
+
   return (
-    <div className="py-20 bg-gray-50">
+    <div className="py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20 flex justify-center">
             <CircularText
@@ -104,14 +116,11 @@ const MenuPage: React.FC = () => {
                 </div>
             </CircularText>
         </div>
-        <MenuCategory title="Cold Coffees" items={menuData.coldCoffees} />
-        <MenuCategory title="Hot Coffees" items={menuData.hotCoffees} />
-        <MenuCategory title="Cold & Hot Beverages" items={menuData.beverages} />
-        <MenuCategory title="Chinos" items={menuData.chinos} />
-        <MenuCategory title="Smoothies & Granitas" items={menuData.smoothies} />
-        <MenuCategory title="Pastries" items={menuData.pastries} />
-        <MenuCategory title="Hot Sandwiches" items={menuData.sandwiches} />
-        <MenuCategory title="Soft Drinks" items={menuData.softDrinks} />
+        {categories.map((category, index) => (
+            <AnimateOnScroll key={category.title} delay={index * 0.1}>
+                <MenuCategory title={category.title} items={category.items} />
+            </AnimateOnScroll>
+        ))}
       </div>
     </div>
   );
