@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import AnimateOnScroll from '../components/AnimateOnScroll';
+import { ScrollDownIcon } from '../components/icons';
 
 const HomePage: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/images/det_noe_wiz_5.jpg')" }}>
+      <section className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/images/det_noe_wiz_5.jpg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 animate-fade-in-down">Welcome to Noe Coffee Bar</h1>
@@ -27,6 +29,19 @@ const HomePage: React.FC = () => {
               Place an Order
             </a>
           </div>
+        </div>
+        {/* Scroll Down Indicator */}
+        <div 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 cursor-pointer"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          aria-label="Scroll down"
+        >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ScrollDownIcon />
+            </motion.div>
         </div>
       </section>
 
