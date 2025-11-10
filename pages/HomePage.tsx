@@ -137,6 +137,12 @@ const HomePage: React.FC = () => {
                 <p className="text-gray-600 leading-relaxed">
                   We source the finest beans from sustainable farms around the world and roast them to perfection to bring out their unique flavors. Join us for a cup and become part of our story.
                 </p>
+                <Link 
+                  to="/about" 
+                  className="bg-noe-yellow text-noe-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105 inline-block mt-6"
+                >
+                  View About Us
+                </Link>
               </div>
               <div className="order-1 md:order-2">
                 <img src="https://cyprus.wiz-guide.com/assets/modules/kat/articles/202510/10580/photos/gn_noe_wiz_4.jpg" alt="Noe Coffee Bar Interior" className="rounded-lg shadow-xl w-full h-full object-cover"/>
